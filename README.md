@@ -76,22 +76,19 @@ space auth disable -- Disponibiliza el proyecto para cualquier persona.`
 
 Deben de hacer click en 'Consultas'.
 
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/principal.png)
+
 - Cantidad de películas con determinado score promedio por año y plataforma
-ingresando los datos en: @app.get("/get_score_count/{platform}/{scored}/{year}")
-
-podrás encontrar la cantidad de películas por año y plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
-
-Ten en cuenta que los 3 datos son requeridos.
+ingresando los datos en: `/get_score_count/`. Los 3 datos son requeridos.
 
 Actor que mas veces aparece en determinado año y plataforma
-ingresando los datos en: @app.get("/get_actor/{platform}/{release_year}")
+ingresando los datos en: `/get_actor/`
 
 podrás encontrar encontrar el actor que mas veces aparece por año y plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
 
 Cantidad de películas por plataforma
-ingresando los datos en: @app.get("/get_count_platform/{platform}")
+ingresando los datos en: `/get_count_platform/`
 
-podrás encontrar la cantidad de películas por plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
 
 Película con mayor duración
 ingresando los datos en: @app.get("/get_max_duration")
