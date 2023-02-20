@@ -17,34 +17,93 @@ app = FastAPI(title='API - Score Movies - By Isaac Avelino')
 @app.get("/")
 async def index():
     html_content = """
-    <html>
-    <head>
-        <style>
-             /* Estilos CSS */
-      .boton {
-        display: inline-block;
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        border: none;
-        font-size: 16px;
-        margin-right: 10px;
-        cursor: pointer;
-      }
-      
-      .boton-secundario {
-        background-color: #f44336;
-      }
-        </style>
-    </head>
-    <body>
-         <button formaction="/docs" class="boton" >Consultas generales</button>
-        <button class="boton boton-secundario">Botón 2</button>
-    </body>
-    </html>
+    <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+main {
+	margin: 20px;
+}
+
+section {
+	margin-bottom: 20px;
+}
+
+.contenido {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+img {
+	width: 50%;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+</style>
+	<title>Mi página web</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+	<header>
+		<h1>API</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/about/">Acerca de</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<div class="contenido">
+				<img src="https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/plataformas.png" alt="Imagen">
+                <form action="/docs">
+                    <button type="submit">Consultas generales</button>
+                </form>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
     """
     return HTMLResponse(content=html_content, status_code=200)
 

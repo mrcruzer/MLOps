@@ -41,7 +41,7 @@ Tengo dos notebook: [transform_data_api.ipynb](https://github.com/mrcruzer/MLOps
 
 `2 - Desarrollo de la API en FastAPI:`
 
-Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvicorn. Desarrollé la API con FastApi (ubicado en scored/api [main.py](https://github.com/mrcruzer/MLOps/blob/main/scored_api/main.py).
+Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvicorn. Desarrollé la API con FastApi (ubicado en platform_api/api [main.py](https://github.com/mrcruzer/MLOps/blob/main/scored_api/main.py).
 
 - get_max_duration(year, platform, duration_type): Película con mayor duración con filtros opcionales de AÑO, PLATAFORMA Y TIPO DE DURACIÓN.
 
@@ -66,7 +66,8 @@ Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvico
 Como primer paso hay que realizar una cuenta en Deta, luego crear una carpeta solo con los archivos main.py y requirements.txt:
 
 iwr https://get.deta.dev/cli.ps1 -useb | iex -- Instalación del CLI.
-deta login -- Abre el navegador para que pueda loguearse con su cuenta .
-deta new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el "endpoint" que otorga en la pantalla si dice "Hola Mundo" la conexión fue exitosa.
-deta deploy -- Realiza el deploy del proyecto
-deta auth disable -- Disponibiliza el proyecto para cualquier persona.`
+space login -- Abre el navegador para que pueda loguearse con su cuenta .
+space new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el "endpoint" que otorga en la pantalla si dice "Hola Mundo" la conexión fue exitosa.
+space push -- Realiza el deploy del proyecto
+space release
+space auth disable -- Disponibiliza el proyecto para cualquier persona.`
