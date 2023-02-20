@@ -113,4 +113,7 @@ RMSE: 0.6254
 
 Al ingresar al modelo entrenado el 'userId' y el 'id' devuelve la recomendación: 
 
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/modelo.png)
+
 Aqui esta el modelo entrenado: [Link](https://huggingface.co/spaces/iavelino/ml_ops/raw/main/modelo.joblib)
+Aqui esta ml_ops: donde esta desplegado el modelo de recomendacion: [Link](https://huggingface.co/spaces/iavelino/ml_ops/tree/main)
