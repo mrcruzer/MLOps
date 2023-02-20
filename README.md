@@ -65,14 +65,16 @@ Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvico
 `4 - Deployment en Deta Space:`
 Como primer paso hay que realizar una cuenta en Deta, luego crear una carpeta solo con los archivos main.py y requirements.txt:
 
-iwr https://get.deta.dev/cli.ps1 -useb | iex -- Instalación del CLI.
-space login -- Abre el navegador para que pueda loguearse con su cuenta .
-space new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el "endpoint" que otorga en la pantalla si dice "Hola Mundo" la conexión fue exitosa.
-space push -- Realiza el deploy del proyecto
-space release
-space auth disable -- Disponibiliza el proyecto para cualquier persona.`
+- iwr https://get.deta.dev/cli.ps1 -useb | iex -- Instalación del CLI.
+- space login -- Abre el navegador para que pueda loguearse con su cuenta .
+- space new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el "endpoint" que otorga en la pantalla si dice "Hola Mundo" la conexión fue exitosa.
+- space push -- Realiza el deploy del proyecto
+- space release
+- space auth disable -- Disponibiliza el proyecto para cualquier persona.`
 
 ### Uso de la api
+
+[Link](https://deta.space/discovery/r/g7ggkndqcm6s6fau)
 
 Deben de hacer click en 'Consultas'.
 
@@ -81,16 +83,34 @@ Deben de hacer click en 'Consultas'.
 - Cantidad de películas con determinado score promedio por año y plataforma
 ingresando los datos en: `/get_score_count/`. Los 3 datos son requeridos.
 
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/get_score_count.png)
+
 Actor que mas veces aparece en determinado año y plataforma
 ingresando los datos en: `/get_actor/`
 
-podrás encontrar encontrar el actor que mas veces aparece por año y plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/get_actor.png)
 
 Cantidad de películas por plataforma
 ingresando los datos en: `/get_count_platform/`
 
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/get_count_platform.png)
 
 Película con mayor duración
-ingresando los datos en: @app.get("/get_max_duration")
+ingresando los datos en: `/get_max_duration/`
 
-podrás encontrar la película por plataforma y tipo (minutos o season) Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney, al igual que las opciones para min o season. Los datos son opcionales, con lo cual si no los colocas el filtro se aplica sobre los demas campos.
+Podremos buscar la película por plataforma y tipo (minutos o season), Los datos son opcionales, con lo cual si no los colocas el filtro 
+se aplica sobre los demas campos.
+
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/get_max_duration.png)
+
+### Modelo de Recomendación
+
+Pude generar un modelo con la librería surprise y se entrenó un modelo simple para predecir si la película va a gustarle o no al usuario. El modelo probado se basa en algoritmo SVD (Singular Value Decomposition).
+
+Las métricas del modelo fueron:
+MAE: 0.4717
+RMSE: 0.6254
+
+Al ingresar al modelo entrenado el 'userId' y el 'id' devuelve la recomendación: 
+
+Aqui esta el modelo entrenado: [Link](https://huggingface.co/spaces/iavelino/ml_ops/raw/main/modelo.joblib)
