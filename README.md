@@ -27,7 +27,7 @@ Tengo 4 datasets de HULU, DISNEY PLUS, AMAZON PRIME, NETFLIX
 
 He utilizado python, las librerias pandas y numpy. 
 Tengo dos notebook: [transform_data_api.ipynb](https://github.com/mrcruzer/MLOps/blob/main/transform_data_api.ipynb), Para la parte de la API generando un csv movies_completo_api.csv ubicado en scored_api/datasets.
-[transform_data_ML](https://github.com/mrcruzer/MLOps/blob/main/transform_data_ML.ipynb), Genere un archivo con extension .parquet para ahorrar espacio.
+[transform_data_ML.ipynb](https://github.com/mrcruzer/MLOps/blob/main/transform_data_ML.ipynb), Genere un archivo con extension .parquet para ahorrar espacio.
 
 - Genere un campo id: Cada id se compondrá de la primera letra del nombre de la plataforma, seguido del show_id ya presente en los datasets (ejemplo para títulos de Amazon = as123)
 
@@ -39,15 +39,34 @@ Tengo dos notebook: [transform_data_api.ipynb](https://github.com/mrcruzer/MLOps
 
 - Separe el campo duration en dos campos: duration_int y duration_type. El primero será un integer y el segundo un string indicando la unidad de medición de duración: min (minutos) o season (temporadas)
 
-2 - Desarrollo de la API en FastAPI:
+`2 - Desarrollo de la API en FastAPI:`
 
 Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvicorn. Desarrollé la API con FastApi (ubicado en scored/api [main.py](https://github.com/mrcruzer/MLOps/blob/main/scored_api/main.py).
 
-get_word_count: cantidad de veces que aparece una palabra en el título de peliculas o series, por plataforma.
-get_score_count: cantidad de películas por plataforma con un puntaje mayor a 'xx' en determinado año.
-get_second_score: la segunda película con mayor score para una plataforma determinada, según el orden alfabético de los títulos.
-get_longest: película o serie que más duró según año, plataforma y tipo de duración.
-get_rating_count: cantidad de series y películas por tipo de rating.
-Durante la etapa de desarrollo revisé el funcionamiento integral de la API y sus consultas de manera local desde la terminal con el comando uvicorn main:app --reload en el localhost http://127.0.0.1:8000/ . Una vez logrado el adecuado funcionamiento de API de manera local realice en archivo de requerimientos con el comando pip freeze > requirements.txt.
+- get_max_duration(year, platform, duration_type): Película con mayor duración con filtros opcionales de AÑO, PLATAFORMA Y TIPO DE DURACIÓN.
 
-Aclaracion: Si ha utilizado el comando pip freeze > requirements.txt en powershell Windows, el archivo creado no está codificado en UTF-8. Cambie la codificación o cree un nuevo archivo con la codificación correcta para poder realizar el deploy. No olvide borrar de los requerimientos a uvicorn ya que no es necesario para el deploy.
+- get_score_count(platform, scored, year): Cantidad de películas por plataforma con un puntaje mayor a XX en determinado año.
+
+- get_count_platform(platform): Cantidad de películas por plataforma con filtro de PLATAFORMA.
+
+- get_actor(platform, year): Actor que más se repite según plataforma y año.
+
+`3 - Análisis exploratorio de los datos: (Exploratory Data Analysis-EDA)`
+
+- Cantidad de filas:  9564574
+- id object Valores no nulos:  9564574
+- userId int64 Valores no nulos:  9564574
+- score float64 Valores no nulos:  9564574
+- title object Valores no nulos:  9564574
+
+- 113937 usuarios únicos.
+- los valores de score van en un rango de 1 a 5, con una media de 3.53
+
+`4 - Deployment en Deta Space:`
+Como primer paso hay que realizar una cuenta en Deta, luego crear una carpeta solo con los archivos main.py y requirements.txt:
+
+iwr https://get.deta.dev/cli.ps1 -useb | iex -- Instalación del CLI.
+deta login -- Abre el navegador para que pueda loguearse con su cuenta .
+deta new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el "endpoint" que otorga en la pantalla si dice "Hola Mundo" la conexión fue exitosa.
+deta deploy -- Realiza el deploy del proyecto
+deta auth disable -- Disponibiliza el proyecto para cualquier persona.`
