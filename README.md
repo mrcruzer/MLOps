@@ -14,3 +14,7 @@ Por igual solicitaba elaborar una API a efectos de disponibilizar los datos de m
 - Llevar a cabo el desarrollo de la API a través de FastApi.
 - Ejecutar el deployment de la API en Deta.
 - Crear un modelo de machine learning
+
+### Datos
+
+![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/plataformas.png)
