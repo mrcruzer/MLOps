@@ -41,7 +41,7 @@ Tengo dos notebook: [transform_data_api.ipynb](https://github.com/mrcruzer/MLOps
 
 `2 - Desarrollo de la API en FastAPI:`
 
-Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvicorn. Desarrollé la API con FastApi (ubicado en platform_api/api [main.py](https://github.com/mrcruzer/MLOps/blob/main/scored_api/main.py).
+Para esta parte use un entorno virtual donde se instaló FastAPI, Pandas y Uvicorn. Desarrollé la API con FastApi (ubicado en platform_api [main.py](https://github.com/mrcruzer/MLOps/blob/main/platform_api/main.py).
 
 - get_max_duration(year, platform, duration_type): Película con mayor duración con filtros opcionales de AÑO, PLATAFORMA Y TIPO DE DURACIÓN.
 
@@ -71,3 +71,29 @@ space new --python -- Acaba de crear una nueva micro. Pruebe en el navegador el 
 space push -- Realiza el deploy del proyecto
 space release
 space auth disable -- Disponibiliza el proyecto para cualquier persona.`
+
+### Uso de la api
+
+Deben de hacer click en 'Consultas'.
+
+- Cantidad de películas con determinado score promedio por año y plataforma
+ingresando los datos en: @app.get("/get_score_count/{platform}/{scored}/{year}")
+
+podrás encontrar la cantidad de películas por año y plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
+
+Ten en cuenta que los 3 datos son requeridos.
+
+Actor que mas veces aparece en determinado año y plataforma
+ingresando los datos en: @app.get("/get_actor/{platform}/{release_year}")
+
+podrás encontrar encontrar el actor que mas veces aparece por año y plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
+
+Cantidad de películas por plataforma
+ingresando los datos en: @app.get("/get_count_platform/{platform}")
+
+podrás encontrar la cantidad de películas por plataforma. Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney.
+
+Película con mayor duración
+ingresando los datos en: @app.get("/get_max_duration")
+
+podrás encontrar la película por plataforma y tipo (minutos o season) Para plataforma no es necesario que ingreses el nombre completo, se programó para que interprete por ejemplo que 'n', 'ne', 'net', 'netf', 'netfl', 'netfli', 'netflix' corresponden a 'netflix' y lo mismo para las demás opciones: hulu, amazon y disney, al igual que las opciones para min o season. Los datos son opcionales, con lo cual si no los colocas el filtro se aplica sobre los demas campos.

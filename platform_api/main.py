@@ -97,7 +97,7 @@ button {
 			<div class="contenido">
 				<img src="https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/plataformas.png" alt="Imagen">
                 <form action="/docs">
-                    <button type="submit">Consultas generales</button>
+                    <button type="submit">Consultas</button>
                 </form>
 			</div>
 		</section>
