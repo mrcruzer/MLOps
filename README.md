@@ -17,4 +17,13 @@ Por igual solicitaba elaborar una API a efectos de disponibilizar los datos de m
 
 ### Datos
 
+Tengo 4 datasets de HULU, DISNEY PLUS, AMAZON PRIME, NETFLIX
+
 ![](https://raw.githubusercontent.com/mrcruzer/MLOps/main/src/plataformas.png)
+
+### Pasos:
+
+1- Transformaciones:
+He utilizado python, las librerias pandas y numpy. 
+Tengo dos notebook: [Links](https://github.com/mrcruzer/MLOps/blob/main/transform_data_api.ipynb "transform_data_api.ipynb"), Para la parte de la API generando un csv ubicado en scored_api
+transform_data_ML y por último convertí el dataframe en el archivo data.csv para utilizar en la elaboración de la API.
