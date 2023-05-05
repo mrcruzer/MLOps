@@ -1,4 +1,4 @@
-# PROYECTO 1 -- Machine Learning Operations (MLOps)
+# Machine Learning Operations (MLOps)
 
 ### Tema principal
 
